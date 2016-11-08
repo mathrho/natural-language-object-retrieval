@@ -114,7 +114,7 @@ for videonfile in videofiles:
 
     # save results to file
     filename = '../results/OTB50_edgeboxes_top100/'+video+'_'+'scrc'+'.txt'
-    if video_name == 'Tiger1':
+    if video == 'Tiger1':
         filename = '../results/OTB50_edgeboxes_top100/'+video+'_refined_'+'scrc'+'.txt'
     fp = open(filename, 'w')
     for jj in range(num_frames):
