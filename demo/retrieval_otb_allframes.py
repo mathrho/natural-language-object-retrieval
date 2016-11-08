@@ -63,6 +63,8 @@ for videonfile in videofiles:
         gt_boxes = np.loadtxt(gt_file, delimiter=',').astype(int)
     except ValueError:
         gt_boxes = np.loadtxt(gt_file, delimiter='\t').astype(int)
+    if video == 'Tiger1':
+        gt_boxes = gt_boxes[5:, :]
     num_frames = gt_boxes.shape[0]
 
     counter = 0
