@@ -69,7 +69,7 @@ for videonfile in videofiles:
     #frames = sorted(glob('/home/zhenyang/Workspace/data/Tracker_Benchmark_v1.0/'+video+'/img/*.jpg'))
     for fi in tqdm(range(start_frame_id, num_frames+start_frame_id)):
         im_file = '/home/zhenyang/Workspace/data/Tracker_Benchmark_v1.0/' + video + '/img/%04d.jpg' % (fi,)
-        edgebox_file = '../data/OTB50_edgeboxes_top100/' +  video + '/%4d.txt' % (fi,) # pre-extracted EdgeBox proposals
+        edgebox_file = '../data/OTB50_edgeboxes_top100/' +  video + '/%04d.txt' % (fi,) # pre-extracted EdgeBox proposals
 
         ###############################
         im = skimage.io.imread(im_file)
