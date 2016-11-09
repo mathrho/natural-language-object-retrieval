@@ -40,7 +40,7 @@ vocab_dict = retriever.build_vocab_dict_from_captioner(captioner)
 
 ####################################################
 videofiles = sorted(glob('/home/zhenyang/Workspace/data/OTB-100-othervideos/*'))
-videofiles = videofiles[10:]
+videofiles = videofiles[16:]
 for videonfile in videofiles:
     video = videonfile.split('/')[-1]
     print(video)
@@ -56,6 +56,9 @@ for videonfile in videofiles:
         start_frame_id = 3
     elif video == 'BlurCar4':
         start_frame_id = 18
+
+    if video == 'ClifBar':
+        continue
 
     # First, select query
     query_file = '../data/OTB100Entities/' + video + '.xml'
