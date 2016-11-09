@@ -39,7 +39,7 @@ vocab_dict = retriever.build_vocab_dict_from_captioner(captioner)
 
 ####################################################
 videofiles = sorted(glob('/home/zhenyang/Workspace/data/OTB-100-othervideos/*'))
-#videofiles = videofiles[45:]
+videofiles = videofiles[1:]
 for videonfile in videofiles:
     video = videonfile.split('/')[-1]
     print(video)
@@ -84,6 +84,12 @@ for videonfile in videofiles:
         im = skimage.io.imread(im_file)
         imsize = np.array([im.shape[1], im.shape[0]])  # [width, height]
         candidate_boxes = np.loadtxt(edgebox_file).astype(int).reshape((-1, 4))
+
+        if candidate_boxes.size == 0:
+            retrieved_bbox = np.zeros((4,))
+            results[counter, :] = retrieved_bbox
+            counter = counter + 1
+            continue
 
         #print(candidate_boxes.shape)
         #print(gt_box.shape)
