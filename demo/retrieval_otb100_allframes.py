@@ -40,7 +40,7 @@ vocab_dict = retriever.build_vocab_dict_from_captioner(captioner)
 
 ####################################################
 videofiles = sorted(glob('/home/zhenyang/Workspace/data/OTB-100-othervideos/*'))
-videofiles = videofiles[4:]
+videofiles = videofiles[10:]
 for videonfile in videofiles:
     video = videonfile.split('/')[-1]
     print(video)
