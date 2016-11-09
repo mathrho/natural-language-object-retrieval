@@ -83,8 +83,12 @@ for videonfile in videofiles:
     results = np.zeros((num_frames, 4), np.int)
     #frames = sorted(glob('/home/zhenyang/Workspace/data/OTB-100-othervideos/'+video+'/img/*.jpg'))
     for fi in range(start_frame_id, num_frames+start_frame_id):
-        im_file = '/home/zhenyang/Workspace/data/OTB-100-othervideos/' + video + '/img/%04d.jpg' % (fi,)
-        edgebox_file = '../data/OTB100_edgeboxes_top100/' +  video + '/%04d.txt' % (fi,) # pre-extracted EdgeBox proposals
+        if video == 'Board':
+            im_file = '/home/zhenyang/Workspace/data/OTB-100-othervideos/' + video + '/img/%05d.jpg' % (fi,)
+            edgebox_file = '../data/OTB100_edgeboxes_top100/' +  video + '/%05d.txt' % (fi,) # pre-extracted EdgeBox proposals
+        else:
+            im_file = '/home/zhenyang/Workspace/data/OTB-100-othervideos/' + video + '/img/%04d.jpg' % (fi,)
+            edgebox_file = '../data/OTB100_edgeboxes_top100/' +  video + '/%04d.txt' % (fi,) # pre-extracted EdgeBox proposals
 
         ###############################
         im = skimage.io.imread(im_file)
