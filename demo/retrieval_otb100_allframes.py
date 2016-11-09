@@ -66,14 +66,14 @@ for videonfile in videofiles:
 
     # Second, get gt box
     gt_file = '/home/zhenyang/Workspace/data/OTB-100-othervideos/' + video + '/groundtruth_rect.txt'
-    #try:
-    #    gt_boxes = np.loadtxt(gt_file, delimiter=',').astype(int)
-    #except ValueError:
-    #    gt_boxes = np.loadtxt(gt_file, delimiter='\t').astype(int)
-    s = open(gt_file).read()
-    s = s.replace(' ', ',')
-    s = s.replace('\t', ',')
-    gt_boxes = np.loadtxt(StringIO.StringIO(s), delimiter=',').astype(int).reshape((-1, 4))
+    try:
+        gt_boxes = np.loadtxt(gt_file, delimiter=',').astype(int)
+    except ValueError:
+        gt_boxes = np.loadtxt(gt_file).astype(int)
+    #s = open(gt_file).read()
+    #s = s.replace(' ', ',')
+    #s = s.replace('\t', ',')
+    #gt_boxes = np.loadtxt(StringIO.StringIO(s), delimiter=',').astype(int).reshape((-1, 4))
 
     if video == 'Tiger1':
         gt_boxes = gt_boxes[5:, :]
