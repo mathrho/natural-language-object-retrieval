@@ -18,6 +18,7 @@ import util
 from captioner import Captioner
 import retriever
 from glob import glob, iglob
+import StringIO
 from computeIOU import computeIOU
 from tqdm import tqdm
 import xml.etree.ElementTree as ET
@@ -39,7 +40,7 @@ vocab_dict = retriever.build_vocab_dict_from_captioner(captioner)
 
 ####################################################
 videofiles = sorted(glob('/home/zhenyang/Workspace/data/OTB-100-othervideos/*'))
-videofiles = videofiles[1:]
+videofiles = videofiles[4:]
 for videonfile in videofiles:
     video = videonfile.split('/')[-1]
     print(video)
@@ -65,10 +66,15 @@ for videonfile in videofiles:
 
     # Second, get gt box
     gt_file = '/home/zhenyang/Workspace/data/OTB-100-othervideos/' + video + '/groundtruth_rect.txt'
-    try:
-        gt_boxes = np.loadtxt(gt_file, delimiter=',').astype(int)
-    except ValueError:
-        gt_boxes = np.loadtxt(gt_file, delimiter='\t').astype(int)
+    #try:
+    #    gt_boxes = np.loadtxt(gt_file, delimiter=',').astype(int)
+    #except ValueError:
+    #    gt_boxes = np.loadtxt(gt_file, delimiter='\t').astype(int)
+    s = open(gt_file).read()
+    s = s.replace(' ', ',')
+    s = s.replace('\t', ',')
+    gtboxes = np.loadtxt(StringIO.StringIO(s), delimiter=',').astype(int).reshape((-1, 4))
+
     if video == 'Tiger1':
         gt_boxes = gt_boxes[5:, :]
     num_frames = gt_boxes.shape[0]
