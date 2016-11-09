@@ -73,7 +73,7 @@ for videonfile in videofiles:
     s = open(gt_file).read()
     s = s.replace(' ', ',')
     s = s.replace('\t', ',')
-    gtboxes = np.loadtxt(StringIO.StringIO(s), delimiter=',').astype(int).reshape((-1, 4))
+    gt_boxes = np.loadtxt(StringIO.StringIO(s), delimiter=',').astype(int).reshape((-1, 4))
 
     if video == 'Tiger1':
         gt_boxes = gt_boxes[5:, :]
