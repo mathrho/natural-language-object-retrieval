@@ -39,7 +39,7 @@ vocab_dict = retriever.build_vocab_dict_from_captioner(captioner)
 
 ####################################################
 videofiles = sorted(glob('/home/zhenyang/Workspace/data/OTB-100-othervideos/*'))
-videofiles = videofiles[45:]
+#videofiles = videofiles[45:]
 for videonfile in videofiles:
     video = videonfile.split('/')[-1]
     print(video)
@@ -120,7 +120,7 @@ for videonfile in videofiles:
         #_ = plt.title("query = '%s'" % query)
         #plt.savefig('../results/OTB100_edgeboxes_top100/' +  video + '.png')
         #plt.close( )
-    
+
     # save results to file
     filename = '../results/OTB100_edgeboxes_top100/'+video+'_'+'scrc'+'.txt'
     if video == 'Tiger1':
